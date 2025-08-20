@@ -1,7 +1,8 @@
 import "./ProductList.css"
 import ProductCard from "../ProductCard";
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, memo } from "react";
+import { Link } from "react-router-dom";
+import Categories from "../Categories/Categories";
 
 
 /* fetch is used to wrap Promise and AJAX
@@ -39,16 +40,20 @@ function ProductList() {
     )
   } else {
     return (
-      <div className="products">
-        {productsList.map(function (product) {
-          return <ProductCard key={product.id} product={product} />
-        })}
-      </div>
+      <>
+        <Link to="/cart">cart</Link>
+        <Categories />
+        <div className="products">
+          {productsList.map(function (product) {
+            return <ProductCard key={product.id} product={product} />
+          })}
+        </div>
+      </>
     )
   }
 }
 
-export default ProductList;
+export default memo(ProductList);
 
 /* Without Fetch API
 const products = [

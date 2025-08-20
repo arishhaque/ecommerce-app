@@ -3,6 +3,10 @@ import './App.css';
 import ProductList from './Components/ProductList';
 import ProductCartContext from './Context/ProductCartContext';
 import Cart from './Components/Cart';
+import ProductsPage from './Pages/Products';
+import CartPage from './Pages/Cart';
+import NotFoundPage from './Pages/NotFound';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   // to update cart whenever cart items change, and this should be available to product list and card page to add an item to cart
@@ -34,13 +38,30 @@ function App() {
   }
 
   return (
-    <ProductCartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity }} >
-      <div className="App">
-        <Cart />
-        <ProductList />
+    <>
+      <div className='App'>
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </div>
-    </ProductCartContext.Provider>
+    </>
+  )
+
+  /* using the usecontext way, not redux
+  return (
+    <ProductCartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity }} >
+      <div className='App'>
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
+    </ProductCartContext.Provider >
   );
+  */
 }
 
 export default App;
