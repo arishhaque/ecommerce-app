@@ -1,4 +1,4 @@
-# Ecart App
+# Ecommerce App
 
 A small cart application built with React and Vite. This project demonstrates a simple product list, product cards, and a cart using modern React patterns: hooks (`useReducer`, `useSelector`, `useState`, `useMemo`), Context for app-level state, and a lightweight store structure.
 
