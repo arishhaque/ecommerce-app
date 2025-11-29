@@ -17,9 +17,9 @@ function Cart() {
   } else {
 
     Object.keys(cart).forEach((k) => {
-      totalPrice += cart[k].price
+      totalPrice += cart[k].price * cart[k].quantity;
     });
-
+    console.log(totalPrice);
     return (
       <>
         <h1>My Cart</h1>
