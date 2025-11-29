@@ -1,0 +1,31 @@
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #343a40;
+  width: 20%;
+}
+
+.filters-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #180707;
+}
+
+.filters-container > span {
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: #171515;
+  padding-right: 0 20px;
+}
+.filters-container span {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #171515;
+}
+.filters-container .btn {
+  margin-top: 15px;
+  align-self: flex-start;
+}
