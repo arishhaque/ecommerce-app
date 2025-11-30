@@ -1,3 +1,4 @@
+import "./ReduxProductCart.css"
 import { useDispatch, useSelector } from "react-redux";
 
 function ReduxProductCart({ product }) {

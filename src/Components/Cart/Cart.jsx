@@ -16,10 +16,7 @@ function Cart() {
     )
   } else {
 
-    Object.keys(cart).forEach((k) => {
-      totalPrice += cart[k].price * cart[k].quantity;
-    });
-    console.log(totalPrice);
+    Object.keys(cart).forEach((k) => totalPrice += cart[k].price * cart[k].quantity);
     return (
       <>
         <h1>My Cart</h1>
@@ -29,7 +26,7 @@ function Cart() {
               Object.keys(cart).map((k) => {
                 const item = cart[k];
                 return <li className="cart-item" key={item.id}><div className="cart-item-title">{item.title}, <span className="cart-item-quantity">quantity: {item.quantity}, </span>
-                  <span className="cart-item-price">price: {item.price}</span></div></li>
+                  <span className="cart-item-price">price: {item.price}</span><span className="cart-item-rating">rating: {item.rating.rate}</span></div></li>
               })
             }
           </ol>

@@ -1,4 +1,4 @@
-import { Badge, Dropdown, FormControl } from 'react-bootstrap';
+import { Badge, Dropdown, FormControl, Nav, Navbar, Container } from 'react-bootstrap';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -23,12 +23,35 @@ export function Header() {
           <h1>E-Commerce App</h1>
           <div className="header-right">
             <FormControl placeholder="Search a product" className="search-bar" />
-            <div className='header-cart'>
-              <Link to="/cart">
-                <FaShoppingCart color="black" fontSize="40px" />
-                <Badge>{quantity}</Badge>
-              </Link>
-            </div>
+            <Navbar variant="dark" style={{ height: 40 }}>
+              <Container>
+                <Nav>
+                  <Dropdown className='cart-dropdown'>
+                    <Dropdown.Toggle variant="success">
+                      <FaShoppingCart  color="black" fontSize="40px" />
+                      <Link to="/cart"><Badge>{quantity}</Badge></Link>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      { Object.keys(cart).length > 0 ?
+                          Object.keys(cart).map((k) => {
+                            return (
+                              <div className='header-cart-items'>
+                                <span  key={cart[k].id}>
+                                  <span className="header-cart-item-title">{cart[k].title}, </span>
+                                  <span className="header-cart-item-detail">quantity: {cart[k].quantity}, </span>
+                                  <span className="header-cart-item-detail">price: {cart[k].price}</span>
+                                </span>
+                              </div>
+                            )
+                          })
+                        :
+                          <span style={{ padding: 10 }}>Cart is Empty!</span>
+                      }
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Nav>
+              </Container>
+            </Navbar>
           </div>
         </header>
       </>
