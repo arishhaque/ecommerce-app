@@ -20,9 +20,9 @@ export function Header() {
             <ul className="header-nav">
               <li><Link to="/">Home</Link></li>
               /
-              <li><Link to="/cart">Cart</Link></li>
-              /
               <li><Link to="/categories">Categories</Link></li>
+              /
+              <li><Link to="/cart">Cart</Link></li>
             </ul>
           </div>
           <h1>E-Commerce App</h1>
