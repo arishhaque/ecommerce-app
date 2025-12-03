@@ -2,6 +2,7 @@ import { Badge, Dropdown, FormControl, Nav, Navbar, Container } from 'react-boot
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { CartContext } from "./../Context/CartContext";
 
 
 export function Header() {
@@ -9,6 +10,12 @@ export function Header() {
     const cart = useSelector((state) => state.cart.cart);
     let quantity = 0;
     Object.keys(cart).forEach((k) => quantity += cart[k].quantity);
+
+    const {
+
+      filtersDispatch,
+    } = CartContext();
+
 
     return (
       <>
@@ -22,7 +29,15 @@ export function Header() {
           </div>
           <h1>E-Commerce App</h1>
           <div className="header-right">
-            <FormControl placeholder="Search a product" className="search-bar" />
+            <FormControl className="search-bar"
+              placeholder="Search a product"
+              onChange={(e) => {
+                filtersDispatch({
+                  type: "FILTER_BY_SEARCH",
+                  payload: e.target.value
+                })
+              }}
+            />
             <Navbar variant="dark" style={{ height: 40 }}>
               <Container>
                 <Nav>

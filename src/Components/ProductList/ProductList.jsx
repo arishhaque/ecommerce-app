@@ -1,31 +1,47 @@
 import "./ProductList.css"
 import ProductCard from "../ProductCard";
 import { useState, useEffect, memo } from "react";
-
-
-/* fetch is used to wrap Promise and AJAX
-function fetch(url, options) {
-  return new Promise(function (res, rej) {
-    let req = new XMLHttpRequest();
-    req.open(url, options);
-    req.onreadystatechange = function () {
-      if (this.readyState === 4 && this.code === 200) {
-        res(this.response);
-      } else {
-        rej(this.error);
-      }
-    }
-  });
-}
-*/
+import { CartContext } from "./../../Context/CartContext";
 
 function generateProducts(data) {
-  return data.map((prod) => ({ ...prod, quantity: 0 }));
+  return data.map((prod) => ({ ...prod, quantity: 0, inStock: true,  byFastDelivery: false }));
 }
 
 function ProductList() {
   const [isLoading, setIsLoading] = useState(true);
   const [productsList, setProductsList] = useState([]);
+  const { filtersState: { sort, byStock, byFastDelivery, byRating, searchQuery }} = CartContext();
+
+  const filterProducts = () => {
+    let filteredProducts = productsList;
+    if (sort) {
+      filteredProducts = filteredProducts.sort((a, b) =>
+        sort === "lowToHigh" ? a.price - b.price : b.price - a.price
+      );
+    }
+
+    if (!byStock) {
+      filteredProducts = filteredProducts.filter((prod) => prod.inStock);
+    }
+
+    if (byFastDelivery) {
+      filteredProducts = filteredProducts.filter((prod) => prod.byFastDelivery);
+    }
+
+    if (byRating) {
+      filteredProducts = filteredProducts.filter(
+        (prod) => prod.rating.rate >= byRating
+      );
+    }
+
+    if (searchQuery) {
+      filteredProducts = filteredProducts.filter((prod) =>
+        prod.name.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    return filteredProducts;
+  };
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -34,7 +50,7 @@ function ProductList() {
         setProductsList(generateProducts(data));
         setIsLoading(false);
       })
-  }, [])
+  }, [sort, byStock, byFastDelivery, byRating, searchQuery])
 
   if (isLoading) {
     return (
@@ -44,7 +60,7 @@ function ProductList() {
     return (
       <>
         <div className="products-container">
-          {productsList.map(function (product) {
+          {filterProducts().map(function (product) {
             return <ProductCard key={product.id} product={product} />
           })}
         </div>

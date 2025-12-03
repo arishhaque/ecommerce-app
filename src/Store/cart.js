@@ -55,6 +55,3 @@ function cartReducer(state = { cart: {} }, action) {
 }
 
 export default cartReducer;
-
-// const store = createStore(CartReducer);
-// export default store;
