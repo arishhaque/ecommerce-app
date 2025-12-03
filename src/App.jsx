@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header';
 import Home from './Components/Home';
 import CartPage from './Pages/Cart/CartPage';
+import CategoriesPage from './Pages/Categories/CategoriesPage';
 import NotFoundPage from './Pages/NotFound';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/cart' element={<CartPage />} />
+            <Route path='/categories' element={<CategoriesPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

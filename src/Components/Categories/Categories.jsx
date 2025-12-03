@@ -1,30 +1,27 @@
-import { useEffect, useState } from "react";
+import "./Categories.css"
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCategories } from "../../Store/categories";
 
 function Categories() {
-  //const [isLoading, setIsLoading] = useState(true);
-  //const [categories, setCategories] = useState([]);
-  const cat = useSelector(function (state) {
-    return state.categories
-  });
-
+  const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loadCategories());
   }, [])
 
-  if (cat && cat.isLoading) {
+  if (categories && categories.isLoading) {
     return (
       <div>Loading..</div>
     )
   } else {
     return (
       <>
-        <div className="products">
+        <div className="categories-container"><h1>Categories</h1>
           <ul>
-            {cat.categories.map(function (category) {
-              return <li>{category}</li>;
+            {categories.categories.map(function (category) {
+              return <li key={category} className="category-label">{category}</li>;
             })}
           </ul>
         </div>

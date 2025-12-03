@@ -21,6 +21,8 @@ export function Header() {
               <li><Link to="/">Home</Link></li>
               /
               <li><Link to="/cart">Cart</Link></li>
+              /
+              <li><Link to="/categories">Categories</Link></li>
             </ul>
           </div>
           <h1>E-Commerce App</h1>
