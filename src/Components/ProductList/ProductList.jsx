@@ -36,7 +36,7 @@ function ProductList() {
 
     if (searchQuery) {
       filteredProducts = filteredProducts.filter((prod) =>
-        prod.name.toLowerCase().includes(searchQuery)
+        prod.title.toLowerCase().includes(searchQuery)
       );
     }
 

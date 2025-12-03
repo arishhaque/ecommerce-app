@@ -11,11 +11,7 @@ export function Header() {
     let quantity = 0;
     Object.keys(cart).forEach((k) => quantity += cart[k].quantity);
 
-    const {
-
-      filtersDispatch,
-    } = CartContext();
-
+    const { filtersDispatch } = CartContext();
 
     return (
       <>

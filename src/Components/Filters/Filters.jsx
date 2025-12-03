@@ -1,7 +1,6 @@
 import "./Filters.css"
 import { Button, Form } from "react-bootstrap";
 import { CartContext } from "../../Context/CartContext";
-import { ProductRating } from "./../ProductRating/ProductRating";
 
 function Filters() {
 
