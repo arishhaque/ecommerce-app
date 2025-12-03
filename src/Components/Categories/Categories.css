@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #de6c6c;
+  background-color: #8e6cde;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px #c14c4c1a;
@@ -11,7 +11,6 @@
 .categories-container ul {
   display: flex;
   gap: 40px;
-
 }
 
 .category-label {
