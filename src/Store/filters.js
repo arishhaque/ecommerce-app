@@ -7,7 +7,7 @@ export function filtersReducer(state = { filters: {} }, action) {
     case "FILTER_BY_FAST_DELIVERY":
       return { ...state, byFastDelivery: !state.byFastDelivery }
     case "FILTER_BY_RATING":
-      return { ...state, byRating: !state.byRating }
+      return { ...state, byRating: action.payload }
     case "FILTER_BY_SEARCH":
       return { ...state, searchQuery: action.payload }
     case "CLEAR_FILTERS":

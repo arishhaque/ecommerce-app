@@ -1,11 +1,12 @@
 import "./Filters.css"
 import { Button, Form } from "react-bootstrap";
 import { CartContext } from "../../Context/CartContext";
+import FilterRating from "../FilterRating";
 
 function Filters() {
 
   const {
-    filtersState: { byStock, byFastDelivery, sort },
+    filtersState: { byStock, byFastDelivery, sort, byRating },
     filtersDispatch,
   } = CartContext();
 
@@ -74,6 +75,15 @@ function Filters() {
           checked={byFastDelivery}
         />
       </span>
+      <FilterRating
+          rating={byRating}
+          onClick={(i) =>
+            filtersDispatch({
+              type: "FILTER_BY_RATING",
+              payload: i + 1,
+            })
+          }
+        />
       <Button
         variant="light"
         onClick={() =>
