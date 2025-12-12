@@ -1,6 +1,6 @@
 import "./Filters.css"
 import { Button, Form } from "react-bootstrap";
-import { CartContext } from "../../Context/CartContext";
+import { AppContext } from "../../Context/AppContext";
 import FilterRating from "../FilterRating";
 
 function Filters() {
@@ -8,7 +8,7 @@ function Filters() {
   const {
     filtersState: { byStock, byFastDelivery, sort, byRating },
     filtersDispatch,
-  } = CartContext();
+  } = AppContext();
 
   return (
     <div className="filters-container">

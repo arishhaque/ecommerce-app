@@ -1,7 +1,7 @@
 import "./ProductList.css"
 import ProductCard from "../ProductCard";
 import { useState, useEffect, memo } from "react";
-import { CartContext } from "./../../Context/CartContext";
+import { AppContext } from "../../Context/AppContext";
 
 function generateProducts(data) {
   return data.map((prod) => ({ ...prod, quantity: 0, inStock: true,  byFastDelivery: false }));
@@ -10,7 +10,7 @@ function generateProducts(data) {
 function ProductList() {
   const [isLoading, setIsLoading] = useState(true);
   const [productsList, setProductsList] = useState([]);
-  const { filtersState: { sort, byStock, byFastDelivery, byRating, searchQuery }} = CartContext();
+  const { filtersState: { sort, byStock, byFastDelivery, byRating, searchQuery }} = AppContext();
 
   const filterProducts = () => {
     let filteredProducts = productsList;

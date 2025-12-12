@@ -4,15 +4,14 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux';
 import store from './Store';
 import App from './App.jsx'
-import CartProvider from './Context/CartContext'
-import ProductList from './Components/ProductList/ProductList';
+import AppContextProvider from './Context/AppContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <CartProvider value={{ cartState: [], cartDispatch: () => {}, filtersState: {}, filtersDistpatch: () => {} }}>
+      <AppContextProvider value={{ cartState: [], cartDispatch: () => {}, filtersState: {}, filtersDistpatch: () => {} }}>
         <App />
-      </CartProvider>
+      </AppContextProvider>
     </Provider>
   </StrictMode>
 )
