@@ -5,13 +5,15 @@ export function loadCategories() {
     .then(function (response) {
       return response.json();
     })
-    .then((res) => {
-      dispatch({ type: "LOAD_CATEGORIES_DONE", payload: res })
-    })
+    .then((data) => {
+      dispatch({ type: "LOAD_CATEGORIES_DONE", payload: data })
+    }).catch((error) => {
+      dispatch({ type: "LOAD_CATEGORIES_ERROR", payload: error });
+    });
   }
 }
 
-function categoriesReducer(state = { isLoading: true, categories: [] }, action) {
+function categoriesReducer(state = { isLoading: true, error: false, categories: [] }, action) {
   switch (action.type) {
     case "LOAD_CATEGORIES_START": {
       return {
@@ -24,7 +26,16 @@ function categoriesReducer(state = { isLoading: true, categories: [] }, action) 
       return {
         ...state,
         isLoading: false,
+        error: false,
         categories: action.payload
+      }
+    }
+    case "LOAD_CATEGORIES_ERROR": {
+      return {
+        ...state,
+        isLoading: false,
+        error: true,
+        categories: []
       }
     }
     default:
