@@ -4,7 +4,7 @@ h1 {
 }
 
 .cart-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -33,10 +33,15 @@ h1 {
   width: 800px;
 }
 
-.cart-item-quantity, .cart-item-price, .cart-item-rating {
+.cart-item-unit-price, .cart-item-quantity, .cart-item-price, .cart-item-rating {
   color: #666;
   font-size: 16px;
   padding: 0px 10px;
+}
+
+.cart-item-unit-price {
+  color: #140096;
+  font-weight: bold;
 }
 
 .cart-item-price {

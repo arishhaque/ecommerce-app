@@ -1,7 +1,8 @@
 import "./ProductList.css"
 import ProductCard from "../ProductCard";
 import { useState, useEffect, memo } from "react";
-import { AppContext } from "../../Context/AppContext";
+import { useSelector } from "react-redux"
+//import { AppContext } from "../../Context/AppContext";
 
 function generateProducts(data) {
   return data.map((prod) => ({ ...prod, quantity: 0, inStock: true,  byFastDelivery: false }));
@@ -10,7 +11,10 @@ function generateProducts(data) {
 function ProductList() {
   const [isLoading, setIsLoading] = useState(true);
   const [productsList, setProductsList] = useState([]);
-  const { filtersState: { sort, byStock, byFastDelivery, byRating, searchQuery }} = AppContext();
+  /* using context API to get the filter state
+    const { filtersState: { sort, byStock, byFastDelivery, byRating, searchQuery }} = AppContext();
+  */
+  const { sort, byStock, byFastDelivery, byRating, searchQuery } = useSelector((state) => state.filters);
 
   const filterProducts = () => {
     let filteredProducts = productsList;

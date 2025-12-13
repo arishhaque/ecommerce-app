@@ -25,7 +25,9 @@ function Cart() {
             {
               Object.keys(cart).map((k) => {
                 const item = cart[k];
-                return <li className="cart-item" key={item.id}><div className="cart-item-title">{item.title}, <span className="cart-item-quantity">quantity: {item.quantity}, </span>
+                return <li className="cart-item" key={item.id}><div className="cart-item-title">{item.title},
+                  <span className="cart-item-unit-price">unit price: {cart[k].price}</span>
+                  <span className="cart-item-quantity">quantity: {item.quantity}, </span>
                   <span className="cart-item-price">price: {item.price * item.quantity}</span>
                   <span className="cart-item-rating">rating: {item.rating.rate}</span></div></li>
               })

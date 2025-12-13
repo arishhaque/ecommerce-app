@@ -1,14 +1,20 @@
 import "./Filters.css"
 import { Button, Form } from "react-bootstrap";
-import { AppContext } from "../../Context/AppContext";
 import FilterRating from "../FilterRating";
+import { useSelector, useDispatch } from "react-redux";
+// import { AppContext } from "../../Context/AppContext";
 
 function Filters() {
 
-  const {
-    filtersState: { byStock, byFastDelivery, sort, byRating },
-    filtersDispatch,
-  } = AppContext();
+  /* using Context API to get filters state
+    const {
+      filtersState: { byStock, byFastDelivery, sort, byRating },
+      filtersDispatch,
+    } = AppContext();
+  */
+
+  const { sort, byStock, byFastDelivery, byRating } = useSelector((state) => state.filters);
+  const filtersDispatch = useDispatch();
 
   return (
     <div className="filters-container">

@@ -1,8 +1,8 @@
 import { Badge, Dropdown, FormControl, Nav, Navbar, Container } from 'react-bootstrap';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
-import { AppContext } from "../Context/AppContext";
+import { useSelector, useDispatch } from "react-redux";
+// import { AppContext } from "../Context/AppContext";
 
 
 export function Header() {
@@ -11,7 +11,8 @@ export function Header() {
     let quantity = 0;
     Object.keys(cart).forEach((k) => quantity += cart[k].quantity);
 
-    const { filtersDispatch } = AppContext();
+    // const { filtersDispatch } = AppContext();
+    const filtersDispatch = useDispatch();
 
     return (
       <>
@@ -51,6 +52,7 @@ export function Header() {
                               <div key={k} className='header-cart-items'>
                                 <span  key={cart[k].id}>
                                   <span className="header-cart-item-title">{cart[k].title}, </span>
+                                  <span className="header-cart-item-detail">unit price: {cart[k].price}</span>
                                   <span className="header-cart-item-detail">quantity: {cart[k].quantity}, </span>
                                   <span className="header-cart-item-detail">price: {cart[k].price * cart[k].quantity}</span>
                                 </span>
