@@ -1,7 +1,9 @@
+import { CATEGORIES_FETCH_API } from "./../utils/constants";
+
 export function loadCategories() {
   return (dispatch) => {
     dispatch({ type: "LOAD_CATEGORIES_START", payload: {} })
-    fetch("https://fakestoreapi.com/products/categories")
+    fetch(CATEGORIES_FETCH_API)
     .then(function (response) {
       return response.json();
     })

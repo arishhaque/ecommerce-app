@@ -2,6 +2,7 @@ import "./ProductList.css"
 import ProductCard from "../ProductCard";
 import { useState, useEffect, memo } from "react";
 import { useSelector } from "react-redux"
+import { PRODUCTS_FETCH_API } from "./../../utils/constants";
 //import { AppContext } from "../../Context/AppContext";
 
 function generateProducts(data) {
@@ -48,7 +49,7 @@ function ProductList() {
   };
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch(PRODUCTS_FETCH_API)
       .then((response) => response.json())
       .then((data) => {
         setProductsList(generateProducts(data));
