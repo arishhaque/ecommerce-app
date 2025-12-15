@@ -1,6 +1,6 @@
 # Ecommerce App
 
-A small cart application built with React and Redux. This project demonstrates a simple product list, product cards, and a cart using modern React patterns: hooks (`useReducer`, `useSelector`, `useState`, `useMemo`), Context for app-level state, and a lightweight store structure.
+An e-commerce application built with React and Redux. This project demonstrates a simple product list, product cards, and a cart using modern React patterns: hooks (`useReducer`, `useSelector`, `useState`, `useMemo`), Context for app-level state, and a lightweight store structure.
 
 ## Key Features
 
